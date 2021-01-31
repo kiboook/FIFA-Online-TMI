@@ -32,5 +32,8 @@ https://developers.nexon.com
 
 ## 📚 개발 과정
 
+<a href="https://nam-ki-bok.github.io/spring/UserInfo/" style="color:#0FA678">[FIFA Online TMI] 넥슨 Open API로 유저 정보 가져오기</a>
+
 ## ❗️이슈
 
+📌 [2021.02.01] 유저 정보를 가져와 alert 로 확인했으니 보여주는 화면 구성해야 함
