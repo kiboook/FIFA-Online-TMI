@@ -1,7 +1,7 @@
 package com.fifaonline.tmi.api;
 
 import com.fifaonline.tmi.config.ApiKey;
-import com.fifaonline.tmi.web.dto.UserResponseDto;
+import com.fifaonline.tmi.web.dto.UserApiResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -19,12 +19,12 @@ public class UserApiClient {
 
     private final String UserInfoUrl = "https://api.nexon.co.kr/fifaonline4/v1.0/users?nickname={nickname}";
 
-    public UserResponseDto requestUserInfo(String nickname) {
+    public UserApiResponseDto requestUserInfo(String nickname) {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("Authorization", API_KEY);
 
         final HttpEntity<String> entity = new HttpEntity<>(httpHeaders);
 
-        return restTemplate.exchange(UserInfoUrl, HttpMethod.GET, entity, UserResponseDto.class, nickname).getBody();
+        return restTemplate.exchange(UserInfoUrl, HttpMethod.GET, entity, UserApiResponseDto.class, nickname).getBody();
     }
 }

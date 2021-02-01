@@ -1,7 +1,7 @@
 package com.fifaonline.tmi.web;
 
 import com.fifaonline.tmi.service.UserService;
-import com.fifaonline.tmi.web.dto.UserResponseDto;
+import com.fifaonline.tmi.web.dto.UserApiResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +14,7 @@ public class UserApiController {
 
     @GetMapping("/api/v1/user/{nickname}")
     public Long requestUserInfo(@PathVariable String nickname) {
-        UserResponseDto userResponseDto = userService.requestUserInfo(nickname);
-        return userService.save(userResponseDto);
+        UserApiResponseDto userApiResponseDto = userService.requestUserInfo(nickname);
+        return userService.save(userApiResponseDto);
     }
 }

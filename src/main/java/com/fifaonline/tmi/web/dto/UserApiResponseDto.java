@@ -1,12 +1,10 @@
 package com.fifaonline.tmi.web.dto;
 
 import com.fifaonline.tmi.domain.User;
-import lombok.Data;
 import lombok.Getter;
 
-@Data
 @Getter
-public class UserResponseDto {
+public class UserApiResponseDto {
     private String accessId;
     private String nickname;
     private int level;
