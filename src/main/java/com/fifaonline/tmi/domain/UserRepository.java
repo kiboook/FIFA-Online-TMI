@@ -2,8 +2,5 @@ package com.fifaonline.tmi.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
-
-public interface UserRepository extends JpaRepository<User, String> {
-    Optional<User> findByAccessId(String accessId);
+public interface UserRepository extends JpaRepository<User, Long> {
 }

@@ -15,9 +15,9 @@ var main = {
                 url: '/api/v1/user/' + nickname,
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8'
-            }).done(function (res) {
-                alert(JSON.stringify(res));
-            }).fail(function (error) {
+            }).done(function (id) {
+                window.location.href = '/user/info/'+id;
+            }).fail(function () {
                 alert("존재하지 않는 구단주입니다!");
             });
         }
