@@ -13,7 +13,7 @@ public class UserService {
     private final UserApiClient userApiClient;
     private final UserRepository userRepository;
 
-     @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     public UserResponseDto requestUserInfo(String nickname) {
         return userApiClient.requestUserInfo(nickname);
     }
@@ -22,5 +22,4 @@ public class UserService {
     public Long save(UserResponseDto userResponseDto) {
          return userRepository.save(userResponseDto.toEntity()).getId();
     }
-
 }
