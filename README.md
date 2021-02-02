@@ -24,10 +24,6 @@ https://tmi.nexon.com/kart
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/54533309/105578727-866a8380-5dc5-11eb-889e-67692d130c06.png" alt="image" width="140">
 
-### CI Tool
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://img.icons8.com/color/48/000000/travis-ci.png"/>
-
 ## 📬 NEXON OPEN API
 
 https://developers.nexon.com
