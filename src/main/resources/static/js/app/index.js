@@ -16,9 +16,8 @@ var main = {
                 dataType: 'text',
                 contentType: 'application/json; charset=utf-8'
             }).done(function (nickname) {
-                window.location.href = '/user/info/'+nickname;
-            }).fail(function (error) {
-                // alert(JSON.stringify(error));
+                window.location.href = '/user/info/' + nickname;
+            }).fail(function () {
                 alert("존재하지 않는 구단주입니다!");
             });
         }
