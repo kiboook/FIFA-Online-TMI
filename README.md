@@ -4,7 +4,11 @@
 
 https://tmi.nexon.com/kart
 
-<img src="https://user-images.githubusercontent.com/54533309/106356721-10c26280-6345-11eb-84e9-86632a8aeab7.png" alt="스크린샷 2021-01-30 오후 9 43 32" width="1000">
+<br>
+
+### 개발중..
+
+![ezgif-3-2ae1e38c36e6](https://user-images.githubusercontent.com/54533309/106568181-48fcb780-6576-11eb-98cc-f67ea1c95337.gif)
 
 ## 🛠 기술 스택
 
@@ -33,6 +37,8 @@ https://developers.nexon.com
 ## 📚 개발 과정
 
 <a href="https://nam-ki-bok.github.io/spring/UserInfo/" style="color:#0FA678">[FIFA Online TMI] 넥슨 Open API로 유저 정보 가져오기</a>
+
+<a href="https://nam-ki-bok.github.io/spring/ViewUserInfo/" style="color:#0FA678">[FIFA Online TMI] 넥슨 Open API로 가져온 유저 정보 출력하기</a>
 
 ## ❗️이슈
 
