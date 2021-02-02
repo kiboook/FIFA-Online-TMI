@@ -11,14 +11,11 @@ import javax.persistence.*;
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column
+    private String nickname;
 
     @Column
     private String accessId;
-
-    @Column
-    private String nickname;
 
     @Column
     private int level;

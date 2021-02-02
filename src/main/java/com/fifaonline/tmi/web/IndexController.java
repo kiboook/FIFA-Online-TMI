@@ -18,9 +18,9 @@ public class IndexController {
         return "index";
     }
 
-    @GetMapping("/user/info/{id}")
-    public String userInfo(@PathVariable Long id, Model model) {
-        UserResponseDto userResponseDto = userService.findById(id);
+    @GetMapping("/user/info/{nickname}")
+    public String userInfo(@PathVariable String nickname, Model model) {
+        UserResponseDto userResponseDto = userService.findById(nickname);
         model.addAttribute("user", userResponseDto);
         return "user-info";
     }

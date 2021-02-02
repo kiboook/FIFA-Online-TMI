@@ -13,7 +13,7 @@ public class UserApiController {
     private final UserService userService;
 
     @GetMapping("/api/v1/user/{nickname}")
-    public Long requestUserInfo(@PathVariable String nickname) {
+    public String requestUserInfo(@PathVariable String nickname) {
         UserApiResponseDto userApiResponseDto = userService.requestUserInfo(nickname);
         return userService.save(userApiResponseDto);
     }

@@ -21,12 +21,12 @@ public class UserService {
     }
 
     @Transactional
-    public Long save(UserApiResponseDto userApiResponseDto) {
-        return userRepository.save(userApiResponseDto.toEntity()).getId();
+    public String save(UserApiResponseDto userApiResponseDto) {
+        return userRepository.save(userApiResponseDto.toEntity()).getNickname();
     }
 
-    public UserResponseDto findById(Long id) {
-        User entity = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("구단주가 존재하지 않습니다!"));
+    public UserResponseDto findById(String nickname) {
+        User entity = userRepository.findById(nickname).orElseThrow(() -> new IllegalArgumentException("구단주가 존재하지 않습니다!"));
 
         return new UserResponseDto(entity);
     }

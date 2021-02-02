@@ -13,11 +13,12 @@ var main = {
             $.ajax({
                 type: 'GET',
                 url: '/api/v1/user/' + nickname,
-                dataType: 'json',
+                dataType: 'text',
                 contentType: 'application/json; charset=utf-8'
-            }).done(function (id) {
-                window.location.href = '/user/info/'+id;
-            }).fail(function () {
+            }).done(function (nickname) {
+                window.location.href = '/user/info/'+nickname;
+            }).fail(function (error) {
+                // alert(JSON.stringify(error));
                 alert("존재하지 않는 구단주입니다!");
             });
         }
