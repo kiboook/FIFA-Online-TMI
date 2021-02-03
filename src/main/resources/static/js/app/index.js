@@ -4,6 +4,12 @@ var main = {
         $('#btn-user-info').on('click', function () {
             _this.search_user_info();
         });
+
+        $('#nickname').on('keyup', function (key) {
+            if (key.keyCode === 13) {
+                _this.search_user_info();
+            }
+        })
     },
     search_user_info: function () {
         const nickname = $('#nickname').val();
@@ -13,8 +19,6 @@ var main = {
             $.ajax({
                 type: 'GET',
                 url: '/api/v1/user/' + nickname,
-                dataType: 'text',
-                contentType: 'application/json; charset=utf-8'
             }).done(function (nickname) {
                 window.location.href = '/user/info/' + nickname;
             }).fail(function () {
