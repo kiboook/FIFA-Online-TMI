@@ -36,6 +36,8 @@ https://developers.nexon.com
 
 <a href="https://nam-ki-bok.github.io/spring/ViewUserInfo/" style="color:#0FA678">[FIFA Online TMI] 넥슨 Open API로 가져온 유저 정보 출력하기</a>
 
+<a href="https://nam-ki-bok.github.io/spring/StatusCanceled/" style="color:#0FA678">[FIFA Online TMI] Enter 키로 검색하기, Status=canceled</a>
+
 ## ❗️이슈
 
 📌 [2021.02.01] 유저 정보를 가져와 alert 로 확인했으니 보여주는 화면 구성해야 함 ✔️
@@ -46,4 +48,10 @@ https://developers.nexon.com
 
 📌 [2021.02.03] 유저명 입력 후 엔터키를 눌러도 검색할 수 있게 추가해야 함 ✔️
 
-📌 [2021.02.04] Nexon Open API 찌르는 위치를 class 로 할지 ajax 로 할지 생각해보기
+📌 [2021.02.04] Nexon Open API 찌르는 위치를 class 로 할지 ajax 로 할지 생각해보기 ✔️
+
+- API 를 통해 정보를 가져와 바로 프론트로 뿌려주는 로직이라면 js 에서 끝내고 
+
+  정보를 가져와 백에서 처리하는 과정이 있다면 class 로 가져오는게 낫다고 한다.
+
+📌 [2021.02.05] JQuery 에서 바닐라 JS 로 바꾸기 (ajax &rarr; fetch)
