@@ -4,11 +4,9 @@
 
 https://tmi.nexon.com/kart
 
-<br>
-
 ### 개발중..
 
-![ezgif-3-2ae1e38c36e6](https://user-images.githubusercontent.com/54533309/106568181-48fcb780-6576-11eb-98cc-f67ea1c95337.gif)
+<img src="https://user-images.githubusercontent.com/54533309/107051469-d4dd4080-680f-11eb-8ba2-3ac8604fa867.gif" alt="ezgif com-gif-maker" width="850" />
 
 ## 🛠 기술 스택
 
