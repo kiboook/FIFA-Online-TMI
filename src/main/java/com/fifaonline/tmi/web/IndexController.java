@@ -24,4 +24,10 @@ public class IndexController {
         model.addAttribute("user", userResponseDto);
         return "user-info";
     }
+
+    @GetMapping("/user/division/{nickname}")
+    public String userDivision(@PathVariable String nickname) {
+        // nickname 가지고 DB 에서 유저 조회 한 뒤 accessId 통해 역대 최고 등급 API 찌르기
+        return "user-division";
+    }
 }
