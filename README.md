@@ -52,4 +52,7 @@ https://developers.nexon.com
 
   정보를 가져와 백에서 처리하는 과정이 있다면 class 로 가져오는게 낫다고 한다.
 
-📌 [2021.02.05] JQuery 에서 바닐라 JS 로 바꾸기 (ajax &rarr; fetch)
+📌 [2021.02.05] JQuery 에서 바닐라 JS 로 바꾸기 (ajax &rarr; fetch) ✔️
+- index.js 파일을 JQuery 에서 바닐라 JS 로 바꾸었으나 
+
+  Enter 키로 검색 시 API 요청을 두 번하는 오류가 발생해 통신은 ajax 로 두었다.
