@@ -57,4 +57,4 @@ https://developers.nexon.com
 
   Enter 키로 검색 시 API 요청을 두 번하는 오류가 발생해 통신은 ajax 로 두었다. 
 
-📌 [2021.02.06] #7 js 에서 바로 Nexon OPEN API 를 찌르는 경우 API KEY 숨기는 방법 공부하기
+📌 [2021.02.06] #7 ajax 로 Nexon OPEN API 를 찌르는 경우 API KEY 숨기는 방법 공부하기
