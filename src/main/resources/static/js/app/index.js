@@ -8,7 +8,7 @@ const main = {
             });
         }
 
-        const searchEnter = document.querySelector("#nickname");
+        const searchEnter = document.querySelector("#input-nickname");
         if (searchEnter) {
             searchEnter.addEventListener('keyup', key => {
                 if (key.keyCode === 13) {
