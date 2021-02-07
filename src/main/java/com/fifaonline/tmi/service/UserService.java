@@ -4,7 +4,7 @@ import com.fifaonline.tmi.api.UserApiClient;
 import com.fifaonline.tmi.domain.User;
 import com.fifaonline.tmi.domain.UserRepository;
 import com.fifaonline.tmi.web.dto.UserApiResponseDto;
-import com.fifaonline.tmi.web.dto.UserResponseDto;
+import com.fifaonline.tmi.web.dto.UserInfoResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,9 +25,9 @@ public class UserService {
         return userRepository.save(userApiResponseDto.toEntity()).getNickname();
     }
 
-    public UserResponseDto findById(String nickname) {
+    public UserInfoResponseDto findById(String nickname) {
         User entity = userRepository.findById(nickname).orElseThrow(() -> new IllegalArgumentException("구단주가 존재하지 않습니다!"));
 
-        return new UserResponseDto(entity);
+        return new UserInfoResponseDto(entity);
     }
 }

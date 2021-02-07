@@ -4,12 +4,12 @@ import com.fifaonline.tmi.domain.User;
 import lombok.Getter;
 
 @Getter
-public class UserResponseDto {
+public class UserInfoResponseDto {
     private String accessId;
     private String nickname;
     private int level;
 
-    public UserResponseDto(User entity) {
+    public UserInfoResponseDto(User entity) {
         this.accessId = entity.getAccessId();
         this.nickname = entity.getNickname();
         this.level = entity.getLevel();
