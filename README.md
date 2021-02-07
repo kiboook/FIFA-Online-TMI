@@ -6,7 +6,7 @@ https://tmi.nexon.com/kart
 
 ### 개발중..
 
-<img src="https://user-images.githubusercontent.com/54533309/107150118-8f4f7d80-699f-11eb-9512-92f200716af6.gif" alt="ezgif com-gif-maker" width="800" />
+<img src="https://user-images.githubusercontent.com/54533309/107150466-41d41000-69a1-11eb-9ac1-d5f231cb76c5.gif" alt="ezgif com-gif-maker" width="800" />
 
 ## 🛠 기술 스택
 
@@ -60,3 +60,5 @@ https://developers.nexon.com
 📌 [2021.02.06] #7 ajax 로 Nexon OPEN API 를 찌르는 경우 API KEY 숨기는 방법 공부하기
 
 📌 [2021.02.06] #8 메타 데이터 GET 요청시 CORS 에러 발생, 직접 다운로드 받아서 저장 해야하는지 확인
+
+📌 [2021.02.08] #9 메타 데이터와 매치 종류, 최고 등급 매핑 해야 함
