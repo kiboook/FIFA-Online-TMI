@@ -24,7 +24,7 @@ public class UserApiController {
         return userService.save(userApiResponseDto);
     }
 
-    @GetMapping("/api/v1/user/division/{nickname}")
+    @GetMapping("/api/v1/user/accessId/{nickname}")
     public String requestUserAccessID(@PathVariable String nickname) {
         UserInfoResponseDto userInfoResponseDto = userService.findById(nickname);
         return userInfoResponseDto.getAccessId();
