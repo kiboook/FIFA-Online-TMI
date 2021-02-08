@@ -9,19 +9,22 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import javax.inject.Inject;
+
 @RequiredArgsConstructor
 @Service
 public class UserApiClient {
 
     private final RestTemplate restTemplate;
 
-    private final String API_KEY = ApiKey.API_KEY;
+   @Inject
+   private ApiKey apiKey;
 
     private final String UserInfoUrl = "https://api.nexon.co.kr/fifaonline4/v1.0/users?nickname={nickname}";
 
     public UserApiResponseDto requestUserInfo(String nickname) {
         final HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.set("Authorization", API_KEY);
+        httpHeaders.set("Authorization", apiKey.getKey());
 
         final HttpEntity<String> entity = new HttpEntity<>(httpHeaders);
 
