@@ -69,4 +69,4 @@ Temporary Items
 .apdisk
 
 # End of https://www.toptal.com/developers/gitignore/api/macos
-resources/application-API-KEY.properties
+src/main/resources/application-API-KEY.properties
