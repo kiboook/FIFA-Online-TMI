@@ -36,6 +36,8 @@ https://developers.nexon.com
 
 <a href="https://nam-ki-bok.github.io/spring/StatusCanceled/" style="color:#0FA678">[FIFA Online TMI] Enter 키로 검색하기, Status=canceled</a>
 
+<a href="https://nam-ki-bok.github.io/spring/MatchType/" style="color:#0FA678">[FIFA Online TMI] 매치 타입 메타데이터 받아와 저장하기</a>
+
 ## ❗️이슈
 
 📌 [2021.02.01] #1 유저 정보를 가져와 alert 로 확인했으니 보여주는 화면 구성해야 함 ✔️
