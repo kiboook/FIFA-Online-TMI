@@ -1,8 +1,10 @@
 package com.fifaonline.tmi.service;
 
 import com.fifaonline.tmi.api.UserApiClient;
+import com.fifaonline.tmi.domain.MatchTypeRepository;
 import com.fifaonline.tmi.domain.User;
 import com.fifaonline.tmi.domain.UserRepository;
+import com.fifaonline.tmi.web.dto.MatchTypeDto;
 import com.fifaonline.tmi.web.dto.UserApiResponseDto;
 import com.fifaonline.tmi.web.dto.UserInfoResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     private final UserApiClient userApiClient;
     private final UserRepository userRepository;
+    private final MatchTypeRepository matchTypeRepository;
 
     @Transactional(readOnly = true)
     public UserApiResponseDto requestUserInfo(String nickname) {
@@ -21,7 +24,7 @@ public class UserService {
     }
 
     @Transactional
-    public String save(UserApiResponseDto userApiResponseDto) {
+    public String userInfoSave(UserApiResponseDto userApiResponseDto) {
         return userRepository.save(userApiResponseDto.toEntity()).getNickname();
     }
 
@@ -29,5 +32,15 @@ public class UserService {
         User entity = userRepository.findById(nickname).orElseThrow(() -> new IllegalArgumentException("구단주가 존재하지 않습니다!"));
 
         return new UserInfoResponseDto(entity);
+    }
+
+    public void requestMatchTypeMetaDate() {
+        matchTypeSave(userApiClient.requestMatchTypeMetaDate());
+    }
+
+    public void matchTypeSave(MatchTypeDto[] matchTypeDtoArray) {
+        for (MatchTypeDto val : matchTypeDtoArray) {
+            matchTypeRepository.save(val.toEntity());
+        }
     }
 }

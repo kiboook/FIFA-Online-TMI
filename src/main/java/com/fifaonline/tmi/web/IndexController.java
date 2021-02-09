@@ -15,6 +15,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index() {
+        userService.requestMatchTypeMetaDate();
         return "index";
     }
 
