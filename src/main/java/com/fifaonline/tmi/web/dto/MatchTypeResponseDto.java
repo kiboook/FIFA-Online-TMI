@@ -4,7 +4,7 @@ import com.fifaonline.tmi.domain.MatchType;
 import lombok.Getter;
 
 @Getter
-public class MatchTypeDto {
+public class MatchTypeResponseDto {
     private int matchtype;
     private String desc;
 

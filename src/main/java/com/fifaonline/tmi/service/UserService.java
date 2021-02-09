@@ -4,7 +4,7 @@ import com.fifaonline.tmi.api.UserApiClient;
 import com.fifaonline.tmi.domain.MatchTypeRepository;
 import com.fifaonline.tmi.domain.User;
 import com.fifaonline.tmi.domain.UserRepository;
-import com.fifaonline.tmi.web.dto.MatchTypeDto;
+import com.fifaonline.tmi.web.dto.MatchTypeResponseDto;
 import com.fifaonline.tmi.web.dto.UserApiResponseDto;
 import com.fifaonline.tmi.web.dto.UserInfoResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -38,8 +38,8 @@ public class UserService {
         matchTypeSave(userApiClient.requestMatchTypeMetaDate());
     }
 
-    public void matchTypeSave(MatchTypeDto[] matchTypeDtoArray) {
-        for (MatchTypeDto val : matchTypeDtoArray) {
+    public void matchTypeSave(MatchTypeResponseDto[] matchTypeDtoArray) {
+        for (MatchTypeResponseDto val : matchTypeDtoArray) {
             matchTypeRepository.save(val.toEntity());
         }
     }

@@ -1,7 +1,7 @@
 package com.fifaonline.tmi.api;
 
 import com.fifaonline.tmi.config.ApiKey;
-import com.fifaonline.tmi.web.dto.MatchTypeDto;
+import com.fifaonline.tmi.web.dto.MatchTypeResponseDto;
 import com.fifaonline.tmi.web.dto.UserApiResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
@@ -19,9 +19,8 @@ public class UserApiClient {
     @Inject
     private ApiKey apiKey;
 
-    private final String UserInfoUrl = "https://api.nexon.co.kr/fifaonline4/v1.0/users?nickname={nickname}";
-
     public UserApiResponseDto requestUserInfo(String nickname) {
+        final String UserInfoUrl = "https://api.nexon.co.kr/fifaonline4/v1.0/users?nickname={nickname}";
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("Authorization", apiKey.getKey());
         final HttpEntity<String> entity = new HttpEntity<>(httpHeaders);
@@ -29,13 +28,13 @@ public class UserApiClient {
         return restTemplate.exchange(UserInfoUrl, HttpMethod.GET, entity, UserApiResponseDto.class, nickname).getBody();
     }
 
-    public MatchTypeDto[] requestMatchTypeMetaDate() {
-        MatchTypeDto[] matchTypeDtoArray = null;
+    public MatchTypeResponseDto[] requestMatchTypeMetaDate() {
+        MatchTypeResponseDto[] matchTypeDtoArray = null;
 
         try {
             matchTypeDtoArray =
                     restTemplate.getForEntity("https://static.api.nexon.co.kr/fifaonline4/latest/matchtype.json",
-                            MatchTypeDto[].class).getBody();
+                            MatchTypeResponseDto[].class).getBody();
         } catch (Exception e) {
             System.out.println(e.toString());
         }
