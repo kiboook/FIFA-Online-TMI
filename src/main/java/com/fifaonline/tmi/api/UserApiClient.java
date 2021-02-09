@@ -33,9 +33,9 @@ public class UserApiClient {
         MatchTypeDto[] matchTypeDtoArray = null;
 
         try {
-            ResponseEntity<MatchTypeDto[]> responseEntity =
-                    restTemplate.getForEntity("https://static.api.nexon.co.kr/fifaonline4/latest/matchtype.json", MatchTypeDto[].class);
-            matchTypeDtoArray = responseEntity.getBody();
+            matchTypeDtoArray =
+                    restTemplate.getForEntity("https://static.api.nexon.co.kr/fifaonline4/latest/matchtype.json",
+                            MatchTypeDto[].class).getBody();
         } catch (Exception e) {
             System.out.println(e.toString());
         }
