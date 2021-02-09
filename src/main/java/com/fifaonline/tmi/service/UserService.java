@@ -28,7 +28,7 @@ public class UserService {
         return userRepository.save(userApiResponseDto.toEntity()).getNickname();
     }
 
-    public UserInfoResponseDto findById(String nickname) {
+    public UserInfoResponseDto userInfoFindById(String nickname) {
         User entity = userRepository.findById(nickname).orElseThrow(() -> new IllegalArgumentException("구단주가 존재하지 않습니다!"));
 
         return new UserInfoResponseDto(entity);
