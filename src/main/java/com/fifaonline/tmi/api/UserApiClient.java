@@ -1,6 +1,9 @@
 package com.fifaonline.tmi.api;
 
 import com.fifaonline.tmi.config.ApiKey;
+import com.fifaonline.tmi.domain.MatchType;
+import com.fifaonline.tmi.domain.MatchTypeRepository;
+import com.fifaonline.tmi.service.UserService;
 import com.fifaonline.tmi.web.dto.MatchTypeResponseDto;
 import com.fifaonline.tmi.web.dto.UserApiResponseDto;
 import com.fifaonline.tmi.web.dto.UserDivisionResponseDto;
@@ -10,12 +13,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.inject.Inject;
-import java.util.Arrays;
 
 @RequiredArgsConstructor
 @Service
 public class UserApiClient {
-
+    private final MatchTypeRepository matchTypeRepository;
     private final RestTemplate restTemplate;
 
     @Inject
@@ -51,6 +53,7 @@ public class UserApiClient {
         httpHeaders.set("Authorization", apiKey.getKey());
         final HttpEntity<String> entity = new HttpEntity<>(httpHeaders);
 
+
         try {
             userDivisionResponseDtoArray =
                     restTemplate.exchange(UserDivisionUrl, HttpMethod.GET, entity,
@@ -58,10 +61,19 @@ public class UserApiClient {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
+
         assert userDivisionResponseDtoArray != null;
         for (UserDivisionResponseDto val : userDivisionResponseDtoArray) {
+            val.setMatchType(requestUserDivisionMatchType(Integer.parseInt(val.getMatchType())));
             val.setAchievementDate(val.getAchievementDate().split("T")[0]);
         }
         return userDivisionResponseDtoArray;
+    }
+
+    public String requestUserDivisionMatchType(int id) {
+        MatchType entity = matchTypeRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("매치 타입 에러!"));
+
+        return entity.getDesc();
     }
 }
