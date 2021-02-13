@@ -3,12 +3,14 @@ package com.fifaonline.tmi.api;
 import com.fifaonline.tmi.config.ApiKey;
 import com.fifaonline.tmi.web.dto.MatchTypeResponseDto;
 import com.fifaonline.tmi.web.dto.UserApiResponseDto;
+import com.fifaonline.tmi.web.dto.UserDivisionResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.inject.Inject;
+import java.util.Arrays;
 
 @RequiredArgsConstructor
 @Service
@@ -40,5 +42,26 @@ public class UserApiClient {
         }
 
         return matchTypeDtoArray;
+    }
+
+    public UserDivisionResponseDto[] requestUserDivision(String accessId) {
+        UserDivisionResponseDto[] userDivisionResponseDtoArray = null;
+        final String UserDivisionUrl = "https://api.nexon.co.kr/fifaonline4/v1.0/users/{accessid}/maxdivision";
+        final HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.set("Authorization", apiKey.getKey());
+        final HttpEntity<String> entity = new HttpEntity<>(httpHeaders);
+
+        try {
+            userDivisionResponseDtoArray =
+                    restTemplate.exchange(UserDivisionUrl, HttpMethod.GET, entity,
+                            UserDivisionResponseDto[].class, accessId).getBody();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        assert userDivisionResponseDtoArray != null;
+        for (UserDivisionResponseDto val : userDivisionResponseDtoArray) {
+            val.setAchievementDate(val.getAchievementDate().split("T")[0]);
+        }
+        return userDivisionResponseDtoArray;
     }
 }

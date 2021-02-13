@@ -1,6 +1,7 @@
 package com.fifaonline.tmi.web;
 
 import com.fifaonline.tmi.service.UserService;
+import com.fifaonline.tmi.web.dto.UserDivisionResponseDto;
 import com.fifaonline.tmi.web.dto.UserInfoResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,9 @@ public class IndexController {
     }
 
     @GetMapping("/user/division/{nickname}")
-    public String userDivision(@PathVariable String nickname) {
+    public String userDivision(@PathVariable String nickname, Model model) {
+        UserDivisionResponseDto[] userDivisionResponseArray = userService.requestUserDivision(nickname);
+        model.addAttribute("division", userDivisionResponseArray);
         return "user-division";
     }
 }

@@ -6,6 +6,7 @@ import com.fifaonline.tmi.domain.User;
 import com.fifaonline.tmi.domain.UserRepository;
 import com.fifaonline.tmi.web.dto.MatchTypeResponseDto;
 import com.fifaonline.tmi.web.dto.UserApiResponseDto;
+import com.fifaonline.tmi.web.dto.UserDivisionResponseDto;
 import com.fifaonline.tmi.web.dto.UserInfoResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,12 @@ public class UserService {
         return new UserInfoResponseDto(entity);
     }
 
+    public String requestUserAccessId(String nickname) {
+        User entity = userRepository.findById(nickname).orElseThrow(() -> new IllegalArgumentException("구단주가 존재하지 않습니다!"));
+
+        return entity.getAccessId();
+    }
+
     public void requestMatchTypeMetaDate() {
         matchTypeSave(userApiClient.requestMatchTypeMetaDate());
     }
@@ -42,5 +49,10 @@ public class UserService {
         for (MatchTypeResponseDto val : matchTypeDtoArray) {
             matchTypeRepository.save(val.toEntity());
         }
+    }
+
+    public UserDivisionResponseDto[] requestUserDivision(String nickname) {
+        String accessId = requestUserAccessId(nickname);
+        return userApiClient.requestUserDivision(accessId);
     }
 }
