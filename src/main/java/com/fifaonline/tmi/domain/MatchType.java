@@ -15,13 +15,13 @@ public class MatchType {
 
     @Id
     @Column
-    private int matchType;
+    private String matchType;
 
     @Column
     private String desc;
 
     @Builder
-    public MatchType(int matchType, String desc) {
+    public MatchType(String matchType, String desc) {
         this.matchType = matchType;
         this.desc = desc;
     }

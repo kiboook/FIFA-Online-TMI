@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class MatchTypeResponseDto {
-    private int matchtype;
+    private String matchtype;
     private String desc;
 
     public MatchType toEntity() {

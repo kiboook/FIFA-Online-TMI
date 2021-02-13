@@ -3,7 +3,6 @@ package com.fifaonline.tmi.api;
 import com.fifaonline.tmi.config.ApiKey;
 import com.fifaonline.tmi.domain.MatchType;
 import com.fifaonline.tmi.domain.MatchTypeRepository;
-import com.fifaonline.tmi.service.UserService;
 import com.fifaonline.tmi.web.dto.MatchTypeResponseDto;
 import com.fifaonline.tmi.web.dto.UserApiResponseDto;
 import com.fifaonline.tmi.web.dto.UserDivisionResponseDto;
@@ -64,13 +63,13 @@ public class UserApiClient {
 
         assert userDivisionResponseDtoArray != null;
         for (UserDivisionResponseDto val : userDivisionResponseDtoArray) {
-            val.setMatchType(requestUserDivisionMatchType(Integer.parseInt(val.getMatchType())));
+            val.setMatchType(requestUserDivisionMatchType(val.getMatchType()));
             val.setAchievementDate(val.getAchievementDate().split("T")[0]);
         }
         return userDivisionResponseDtoArray;
     }
 
-    public String requestUserDivisionMatchType(int id) {
+    public String requestUserDivisionMatchType(String id) {
         MatchType entity = matchTypeRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("매치 타입 에러!"));
 
