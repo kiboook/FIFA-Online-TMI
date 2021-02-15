@@ -6,7 +6,7 @@ https://tmi.nexon.com/kart
 
 ### 개발중..
 
-<img src="https://user-images.githubusercontent.com/54533309/107150466-41d41000-69a1-11eb-9ac1-d5f231cb76c5.gif" alt="ezgif com-gif-maker" width="800" />
+<img src="https://user-images.githubusercontent.com/54533309/107951920-67ce6580-6fdc-11eb-986c-6acaf3b869f5.gif" alt="ezgif com-gif-maker" width="800" />
 
 ## 🛠 기술 스택
 
