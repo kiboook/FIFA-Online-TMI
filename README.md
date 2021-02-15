@@ -76,3 +76,5 @@ https://developers.nexon.com
 📌 [2021.02.13] #10 API KEY 를 사용하는 모든 요청을 서버단으로 이동 ✔️
 
 - 키 값을 숨겨서 사용한다고 해도 프론트단에서 키를 사용하면 누구든지 console.log 를 통해 볼 수 있다..
+
+📌 [2021.02.15] #11 ResponseDTO 를 바로 다른 용도로 사용 해야하는 경우 RequestDTO 로 바꾸어야 하는지?
