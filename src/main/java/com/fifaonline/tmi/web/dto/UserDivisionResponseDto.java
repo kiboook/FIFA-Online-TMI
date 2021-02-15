@@ -9,6 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserDivisionResponseDto {
     private String matchType;
-    private int division;
+    private String division;
     private String achievementDate;
 }

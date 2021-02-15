@@ -1,8 +1,10 @@
 package com.fifaonline.tmi.api;
 
 import com.fifaonline.tmi.config.ApiKey;
+import com.fifaonline.tmi.domain.Division;
 import com.fifaonline.tmi.domain.MatchType;
 import com.fifaonline.tmi.domain.MatchTypeRepository;
+import com.fifaonline.tmi.web.dto.DivisionResponseDto;
 import com.fifaonline.tmi.web.dto.MatchTypeResponseDto;
 import com.fifaonline.tmi.web.dto.UserApiResponseDto;
 import com.fifaonline.tmi.web.dto.UserDivisionResponseDto;
@@ -31,7 +33,7 @@ public class UserApiClient {
         return restTemplate.exchange(UserInfoUrl, HttpMethod.GET, entity, UserApiResponseDto.class, nickname).getBody();
     }
 
-    public MatchTypeResponseDto[] requestMatchTypeMetaDate() {
+    public MatchTypeResponseDto[] requestMatchTypeMetaData() {
         MatchTypeResponseDto[] matchTypeDtoArray = null;
 
         try {
@@ -43,6 +45,20 @@ public class UserApiClient {
         }
 
         return matchTypeDtoArray;
+    }
+
+    public DivisionResponseDto[] requestDivisionMetaData() {
+        DivisionResponseDto[] divisionResponseDtoArray = null;
+
+        try {
+            divisionResponseDtoArray =
+                    restTemplate.getForEntity("https://static.api.nexon.co.kr/fifaonline4/latest/division.json",
+                            DivisionResponseDto[].class).getBody();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        return divisionResponseDtoArray;
     }
 
     public UserDivisionResponseDto[] requestUserDivision(String accessId) {
