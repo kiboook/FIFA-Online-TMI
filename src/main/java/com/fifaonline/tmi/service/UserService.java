@@ -64,4 +64,9 @@ public class UserService {
         String accessId = requestUserAccessId(nickname);
         return userApiClient.requestUserDivision(accessId);
     }
+
+    public void metaDataInit() {
+        requestMatchTypeMetaData();
+        requestDivisionMetaData();
+    }
 }

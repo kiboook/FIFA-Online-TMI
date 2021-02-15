@@ -16,8 +16,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index() {
-        userService.requestMatchTypeMetaData();
-        userService.requestDivisionMetaData();
+        userService.metaDataInit();
         return "index";
     }
 
