@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class MatchTypeResponseDto {
+public class MatchTypeMetaDataResponseDto {
     private String matchtype;
     private String desc;
 

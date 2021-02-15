@@ -1,11 +1,11 @@
 package com.fifaonline.tmi.api;
 
 import com.fifaonline.tmi.config.ApiKey;
-import com.fifaonline.tmi.domain.Division;
+import com.fifaonline.tmi.domain.DivisionRepository;
 import com.fifaonline.tmi.domain.MatchType;
 import com.fifaonline.tmi.domain.MatchTypeRepository;
-import com.fifaonline.tmi.web.dto.DivisionResponseDto;
-import com.fifaonline.tmi.web.dto.MatchTypeResponseDto;
+import com.fifaonline.tmi.web.dto.DivisionMetaDataResponseDto;
+import com.fifaonline.tmi.web.dto.MatchTypeMetaDataResponseDto;
 import com.fifaonline.tmi.web.dto.UserApiResponseDto;
 import com.fifaonline.tmi.web.dto.UserDivisionResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +19,7 @@ import javax.inject.Inject;
 @Service
 public class UserApiClient {
     private final MatchTypeRepository matchTypeRepository;
+    private final DivisionRepository divisionRepository;
     private final RestTemplate restTemplate;
 
     @Inject
@@ -33,13 +34,13 @@ public class UserApiClient {
         return restTemplate.exchange(UserInfoUrl, HttpMethod.GET, entity, UserApiResponseDto.class, nickname).getBody();
     }
 
-    public MatchTypeResponseDto[] requestMatchTypeMetaData() {
-        MatchTypeResponseDto[] matchTypeDtoArray = null;
+    public MatchTypeMetaDataResponseDto[] requestMatchTypeMetaData() {
+        MatchTypeMetaDataResponseDto[] matchTypeDtoArray = null;
 
         try {
             matchTypeDtoArray =
                     restTemplate.getForEntity("https://static.api.nexon.co.kr/fifaonline4/latest/matchtype.json",
-                            MatchTypeResponseDto[].class).getBody();
+                            MatchTypeMetaDataResponseDto[].class).getBody();
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -47,13 +48,13 @@ public class UserApiClient {
         return matchTypeDtoArray;
     }
 
-    public DivisionResponseDto[] requestDivisionMetaData() {
-        DivisionResponseDto[] divisionResponseDtoArray = null;
+    public DivisionMetaDataResponseDto[] requestDivisionMetaData() {
+        DivisionMetaDataResponseDto[] divisionResponseDtoArray = null;
 
         try {
             divisionResponseDtoArray =
                     restTemplate.getForEntity("https://static.api.nexon.co.kr/fifaonline4/latest/division.json",
-                            DivisionResponseDto[].class).getBody();
+                            DivisionMetaDataResponseDto[].class).getBody();
         } catch (Exception e) {
             System.out.println(e.toString());
         }

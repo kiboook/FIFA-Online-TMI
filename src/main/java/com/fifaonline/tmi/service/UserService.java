@@ -44,8 +44,8 @@ public class UserService {
         matchTypeSave(userApiClient.requestMatchTypeMetaData());
     }
 
-    public void matchTypeSave(MatchTypeResponseDto[] matchTypeDtoArray) {
-        for (MatchTypeResponseDto val : matchTypeDtoArray) {
+    public void matchTypeSave(MatchTypeMetaDataResponseDto[] matchTypeDtoArray) {
+        for (MatchTypeMetaDataResponseDto val : matchTypeDtoArray) {
             matchTypeRepository.save(val.toEntity());
         }
     }
@@ -54,8 +54,8 @@ public class UserService {
         divisionSave(userApiClient.requestDivisionMetaData());
     }
 
-    public void divisionSave(DivisionResponseDto[] divisionResponseDtoArray) {
-        for (DivisionResponseDto val : divisionResponseDtoArray) {
+    public void divisionSave(DivisionMetaDataResponseDto[] divisionResponseDtoArray) {
+        for (DivisionMetaDataResponseDto val : divisionResponseDtoArray) {
             divisionRepository.save(val.toEntity());
         }
     }

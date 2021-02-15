@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class DivisionResponseDto {
+public class DivisionMetaDataResponseDto {
     private String divisionId;
     private String divisionName;
 
