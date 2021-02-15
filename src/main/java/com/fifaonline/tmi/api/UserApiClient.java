@@ -1,6 +1,7 @@
 package com.fifaonline.tmi.api;
 
 import com.fifaonline.tmi.config.ApiKey;
+import com.fifaonline.tmi.domain.Division;
 import com.fifaonline.tmi.domain.DivisionRepository;
 import com.fifaonline.tmi.domain.MatchType;
 import com.fifaonline.tmi.domain.MatchTypeRepository;
@@ -81,6 +82,7 @@ public class UserApiClient {
         assert userDivisionResponseDtoArray != null;
         for (UserDivisionResponseDto val : userDivisionResponseDtoArray) {
             val.setMatchType(requestUserDivisionMatchType(val.getMatchType()));
+            val.setDivision(requestUserDivisionType(val.getDivision()));
             val.setAchievementDate(val.getAchievementDate().split("T")[0]);
         }
         return userDivisionResponseDtoArray;
@@ -91,5 +93,12 @@ public class UserApiClient {
                 .orElseThrow(() -> new IllegalArgumentException("매치 타입 에러!"));
 
         return entity.getDesc();
+    }
+
+    public String requestUserDivisionType(String id) {
+        Division entity = divisionRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("등급 매치 에러!"));
+
+        return entity.getDivisionName();
     }
 }
