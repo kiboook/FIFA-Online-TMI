@@ -1,10 +1,7 @@
 package com.fifaonline.tmi.service;
 
 import com.fifaonline.tmi.api.UserApiClient;
-import com.fifaonline.tmi.domain.DivisionRepository;
-import com.fifaonline.tmi.domain.MatchTypeRepository;
-import com.fifaonline.tmi.domain.User;
-import com.fifaonline.tmi.domain.UserRepository;
+import com.fifaonline.tmi.domain.*;
 import com.fifaonline.tmi.web.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +14,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final MatchTypeRepository matchTypeRepository;
     private final DivisionRepository divisionRepository;
+    private final PlayerRepository playerRepository;
 
     @Transactional(readOnly = true)
     public UserApiResponseDto requestUserInfo(String nickname) {
@@ -60,6 +58,16 @@ public class UserService {
         }
     }
 
+    public void requestPlayerMetaData() {
+        playerSave(userApiClient.requestPlayerMetaData());
+    }
+
+    public void playerSave(PlayerMetaDataResponseDto[] playerMetaDataResponseDtoArray) {
+        for (PlayerMetaDataResponseDto val : playerMetaDataResponseDtoArray) {
+            playerRepository.save(val.toEntity());
+        }
+    }
+
     public UserDivisionResponseDto[] requestUserDivision(String nickname) {
         String accessId = requestUserAccessId(nickname);
         return userApiClient.requestUserDivision(accessId);
@@ -68,5 +76,6 @@ public class UserService {
     public void metaDataInit() {
         requestMatchTypeMetaData();
         requestDivisionMetaData();
+//        requestPlayerMetaData();
     }
 }

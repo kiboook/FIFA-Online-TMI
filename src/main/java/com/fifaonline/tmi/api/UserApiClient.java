@@ -1,14 +1,8 @@
 package com.fifaonline.tmi.api;
 
 import com.fifaonline.tmi.config.ApiKey;
-import com.fifaonline.tmi.domain.Division;
-import com.fifaonline.tmi.domain.DivisionRepository;
-import com.fifaonline.tmi.domain.MatchType;
-import com.fifaonline.tmi.domain.MatchTypeRepository;
-import com.fifaonline.tmi.web.dto.DivisionMetaDataResponseDto;
-import com.fifaonline.tmi.web.dto.MatchTypeMetaDataResponseDto;
-import com.fifaonline.tmi.web.dto.UserApiResponseDto;
-import com.fifaonline.tmi.web.dto.UserDivisionResponseDto;
+import com.fifaonline.tmi.domain.*;
+import com.fifaonline.tmi.web.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -61,6 +55,20 @@ public class UserApiClient {
         }
 
         return divisionResponseDtoArray;
+    }
+
+    public PlayerMetaDataResponseDto[] requestPlayerMetaData() {
+        PlayerMetaDataResponseDto[] playerMetaDataResponseDtoArray = null;
+
+        try {
+            playerMetaDataResponseDtoArray =
+                    restTemplate.getForEntity("https://static.api.nexon.co.kr/fifaonline4/latest/spid.json",
+                            PlayerMetaDataResponseDto[].class).getBody();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        return playerMetaDataResponseDtoArray;
     }
 
     public UserDivisionResponseDto[] requestUserDivision(String accessId) {
