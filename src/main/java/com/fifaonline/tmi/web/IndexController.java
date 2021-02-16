@@ -34,8 +34,10 @@ public class IndexController {
         return "user-division";
     }
 
-    @GetMapping("/user/trade/record")
-    public String userTradeRecord() {
+    @GetMapping("/user/trade/record/{nickname}")
+    public String userTradeRecord(@PathVariable String nickname, Model model) {
+        UserInfoResponseDto userResponseDto = userService.userInfoFindById(nickname);
+        model.addAttribute("user", userResponseDto);
         return "user-trade-record";
     }
 }

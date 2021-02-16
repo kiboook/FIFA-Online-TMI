@@ -2,8 +2,14 @@
 
 <h1 style="text-align: center">거래 기록</h1>
 
-<div class="container mx-auto" style="width: 80%; text-align: center; margin-top: 400px">
-    <button data-hover="Buy" style="float: left; margin-left: 100px">
+<div class="container mx-auto" style="margin: 200px 0; width: 1000px;">
+    <h4 id="user-info-accessId" style="text-align: center">구단주 고유 식별 ID : {{user.accessId}}</h4>
+    <h4 style="text-align: center">구단주 이름 : {{user.nickname}}</h4>
+    <h4 style="text-align: center">구단주 레벨 : {{user.level}}</h4>
+</div>
+
+<div class="container mx-auto" style="width: 80%; text-align: center;">
+    <button id="btn-max-division" data-hover="Buy" style="float: left; margin-left: 100px">
         <div>구매 기록</div>
     </button>
     <button data-hover="Sell" style="float: right; margin-right: 100px">
