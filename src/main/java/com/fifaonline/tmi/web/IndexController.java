@@ -33,4 +33,9 @@ public class IndexController {
         model.addAttribute("division", userDivisionResponseArray);
         return "user-division";
     }
+
+    @GetMapping("/user/trade/record")
+    public String userTradeRecord() {
+        return "user-trade-record";
+    }
 }
