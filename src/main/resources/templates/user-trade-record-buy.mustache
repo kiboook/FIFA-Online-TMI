@@ -1,0 +1,14 @@
+{{>layout/header}}
+
+<h1 style="text-align: center">구매 기록</h1>
+
+{{#record}}
+    <div class="container mx-auto" style="margin: 60px 0; width: 1000px;">
+        <h4 style="text-align: center">구매 날짜 : {{tradeDate}}</h4>
+        <h4 style="text-align: center">선수 고유 식별자 : {{spid}}</h4>
+        <h4 style="text-align: center">선수 강화 등급 : {{grade}}</h4>
+        <h4 style="text-align: center">BP : {{value}}</h4>
+    </div>
+{{/record}}
+
+{{>layout/footer}}
