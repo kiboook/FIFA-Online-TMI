@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.inject.Inject;
+import java.text.NumberFormat;
 
 @RequiredArgsConstructor
 @Service
@@ -114,7 +115,7 @@ public class UserApiClient {
         BuyRecordResponseDto[] buyRecordResponseDtoArray = null;
 
         final String UserDivisionUrl =
-                "https://api.nexon.co.kr/fifaonline4/v1.0/users/{accessid}/markets?tradetype=buy&offset=0&limit=3";
+                "https://api.nexon.co.kr/fifaonline4/v1.0/users/{accessid}/markets?tradetype=buy&offset=0&limit=15";
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("Authorization", apiKey.getKey());
         final HttpEntity<String> entity = new HttpEntity<>(httpHeaders);
@@ -130,6 +131,7 @@ public class UserApiClient {
         assert buyRecordResponseDtoArray != null;
         for (BuyRecordResponseDto val : buyRecordResponseDtoArray) {
             val.setTradeDate(val.getTradeDate().split("T")[0]);
+            val.setValue(NumberFormat.getInstance().format(Long.valueOf(val.getValue())));
         }
         return buyRecordResponseDtoArray;
     }
