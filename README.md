@@ -6,7 +6,7 @@ https://tmi.nexon.com/kart
 
 ### 개발중..
 
-<img src="https://user-images.githubusercontent.com/54533309/107951920-67ce6580-6fdc-11eb-986c-6acaf3b869f5.gif" alt="ezgif com-gif-maker" width="800" />
+<img src="https://user-images.githubusercontent.com/54533309/108509350-78dee580-7300-11eb-88cd-c9654fb8e1d0.gif" alt="ezgif com-gif-maker" width=800; />
 
 ## 🛠 기술 스택
 
@@ -39,6 +39,8 @@ https://developers.nexon.com
 <a href="https://nam-ki-bok.github.io/spring/MatchType/" style="color:#0FA678">[FIFA Online TMI] 매치 타입 메타데이터 받아와 저장하기</a>
 
 <a href="https://nam-ki-bok.github.io/spring/MatchTypeInServer/" style="color:#0FA678">[FIFA Online TMI] 유저 최고 등급 서버단에서 가져오도록 수정 및 메타 데이터 매핑</a>
+
+<a href="https://nam-ki-bok.github.io/spring/MatchTypeInServer/" style="color:#0FA678">[FIFA Online TMI] 넥슨 Open API로 유저 구매 내역 출력하기</a>
 
 ## ❗️이슈
 
@@ -79,7 +81,7 @@ https://developers.nexon.com
 
 📌 [2021.02.15] #11 ResponseDTO 를 바로 다른 용도로 사용 해야하는 경우 RequestDTO 로 바꾸어야 하는지?
 
-📌 [2021.02.16] #12 선수 정보 메타 데이터를 받아오는데 시간이 너무 오래 걸려 DB를 바꾸어야 한다.
+📌 [2021.02.16] #12 선수 정보 메타 데이터를 받아오는데 시간이 너무 오래 걸려 DB를 바꾸어야 한다. ✔️
 
 - 바꿔봤는데 선수 정보 메타 데이터 양이 너무 많아 저장 할 수 있는 limit 에 걸려버려 저장을 못 한다.
 때문에 선수 정보 메타 데이터를 사용 하기보다 선수 아이디를 가지고 이미지를 띄워주기로 했다.
