@@ -114,7 +114,7 @@ public class UserApiClient {
     public BuyRecordResponseDto[] requestBuyRecord(String accessId) {
         BuyRecordResponseDto[] buyRecordResponseDtoArray = null;
 
-        final String UserDivisionUrl =
+        final String UserBuyRecordUrl =
                 "https://api.nexon.co.kr/fifaonline4/v1.0/users/{accessid}/markets?tradetype=buy&offset=0&limit=7";
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("Authorization", apiKey.getKey());
@@ -122,7 +122,7 @@ public class UserApiClient {
 
         try {
             buyRecordResponseDtoArray =
-                    restTemplate.exchange(UserDivisionUrl, HttpMethod.GET, entity,
+                    restTemplate.exchange(UserBuyRecordUrl, HttpMethod.GET, entity,
                             BuyRecordResponseDto[].class, accessId).getBody();
         } catch (Exception e) {
             System.out.println(e.toString());
