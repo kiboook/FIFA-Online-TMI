@@ -2,6 +2,7 @@ package com.fifaonline.tmi.web;
 
 import com.fifaonline.tmi.service.UserService;
 import com.fifaonline.tmi.web.dto.BuyRecordResponseDto;
+import com.fifaonline.tmi.web.dto.SellRecordResponseDto;
 import com.fifaonline.tmi.web.dto.UserDivisionResponseDto;
 import com.fifaonline.tmi.web.dto.UserInfoResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -47,5 +48,12 @@ public class IndexController {
         BuyRecordResponseDto[] buyRecordResponseDtoArray = userService.requestBuyRecord(nickname);
         model.addAttribute("record", buyRecordResponseDtoArray);
         return "user-trade-record-buy";
+    }
+
+    @GetMapping("/user/trade/record/sell/{nickname}")
+    public String userTradeSellRecord(@PathVariable String nickname, Model model) {
+        SellRecordResponseDto[] sellRecordResponseDtoArray = userService.requestSellRecord(nickname);
+        model.addAttribute("record", sellRecordResponseDtoArray);
+        return "user-trade-record-sell";
     }
 }

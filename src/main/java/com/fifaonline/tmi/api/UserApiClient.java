@@ -154,4 +154,48 @@ public class UserApiClient {
         }
         return buyRecordResponseDtoArray;
     }
+
+    public SellRecordResponseDto[] requestSellRecord(String accessId) {
+        SellRecordResponseDto[] sellRecordResponseDtoArray = null;
+
+        final String UserSellRecordUrl =
+                "https://api.nexon.co.kr/fifaonline4/v1.0/users/{accessid}/markets?tradetype=sell&offset=0&limit=7";
+        final HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.set("Authorization", apiKey.getKey());
+        final HttpEntity<String> entity = new HttpEntity<>(httpHeaders);
+
+        try {
+            sellRecordResponseDtoArray =
+                    restTemplate.exchange(UserSellRecordUrl, HttpMethod.GET, entity,
+                            SellRecordResponseDto[].class, accessId).getBody();
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        assert sellRecordResponseDtoArray != null;
+        for (SellRecordResponseDto val : sellRecordResponseDtoArray) {
+            String valSpid = val.getSpid();
+            String imgUrl = null;
+            val.setTradeDate(val.getTradeDate().split("T")[0]);
+            val.setValue(NumberFormat.getInstance().format(Long.valueOf(val.getValue())));
+            try {
+                restTemplate.getForEntity(
+                        "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p{spid}.png",
+                        String.class, valSpid);
+                imgUrl = "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p" + valSpid + ".png";
+                val.setSpid(imgUrl);
+            } catch (Exception e1) {
+                try {
+                    restTemplate.getForEntity(
+                            "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/players/p{spid}.png",
+                            String.class, valSpid);
+                    imgUrl = "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/players/p" + valSpid + ".png";
+                    val.setSpid(imgUrl);
+                } catch (Exception e2) {
+                    val.setSpid("https://user-images.githubusercontent.com/54533309/108505829-58605c80-72fb-11eb-963d-eaf02f050f34.png");
+                }
+            }
+        }
+        return sellRecordResponseDtoArray;
+    }
 }

@@ -78,6 +78,11 @@ public class UserService {
         return userApiClient.requestBuyRecord(accessId);
     }
 
+    public SellRecordResponseDto[] requestSellRecord(String nickname) {
+        String accessId = requestUserAccessId(nickname);
+        return userApiClient.requestSellRecord(accessId);
+    }
+
     public void metaDataInit() {
         requestMatchTypeMetaData();
         requestDivisionMetaData();
