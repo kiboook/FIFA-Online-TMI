@@ -15,10 +15,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class IndexController {
     private final UserService userService;
+    private boolean initCheck = true;
 
     @GetMapping("/")
     public String index() {
-        userService.metaDataInit();
+        if (initCheck) {
+            userService.metaDataInit();
+            initCheck = false;
+        }
         return "index";
     }
 
