@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.inject.Inject;
 import java.text.NumberFormat;
+import java.util.Arrays;
 
 @RequiredArgsConstructor
 @Service
@@ -128,44 +129,48 @@ public class UserApiClient {
             System.out.println(e.toString());
         }
 
-        assert buyRecordResponseDtoArray != null;
-        for (BuyRecordResponseDto val : buyRecordResponseDtoArray) {
-            String valSpid = val.getSpid();
-            String imgUrl = null;
-            val.setTradeDate(val.getTradeDate().split("T")[0]);
-            val.setValue(NumberFormat.getInstance().format(Long.valueOf(val.getValue())));
+        try {
+            assert buyRecordResponseDtoArray != null;
+            for (BuyRecordResponseDto val : buyRecordResponseDtoArray) {
+                String valSpid = val.getSpid();
+                String imgUrl = null;
+                val.setTradeDate(val.getTradeDate().split("T")[0]);
+                val.setValue(NumberFormat.getInstance().format(Long.valueOf(val.getValue())));
 
-            try { // 선수 고유 식별자로 액션샷 조회
-                restTemplate.getForEntity(
-                        "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p{spid}.png",
-                        String.class, valSpid);
-                imgUrl = "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p" + valSpid + ".png";
-                val.setSpid(imgUrl);
-            } catch (Exception e1) {
-                try { // 선수 고유 식별자로 이미지 조회
+                try { // 선수 고유 식별자로 액션샷 조회
                     restTemplate.getForEntity(
-                            "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/players/p{spid}.png",
+                            "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p{spid}.png",
                             String.class, valSpid);
-                    imgUrl = "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/players/p" + valSpid + ".png";
+                    imgUrl = "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p" + valSpid + ".png";
                     val.setSpid(imgUrl);
-                } catch (Exception e2) {
-                    valSpid = valSpid.substring(3);
-                    valSpid = String.valueOf(Integer.valueOf(valSpid));
-                    try { // 선수 식별자로 액션샷 조회
+                } catch (Exception e1) {
+                    try { // 선수 고유 식별자로 이미지 조회
                         restTemplate.getForEntity(
-                                "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p{pid}.png",
-                                String.class, valSpid);
-                        imgUrl = "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p" + valSpid + ".png";
-                        val.setSpid(imgUrl);
-                    } catch (Exception e3) {
-                        restTemplate.getForEntity(
-                                "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/players/p{pid}.png",
+                                "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/players/p{spid}.png",
                                 String.class, valSpid);
                         imgUrl = "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/players/p" + valSpid + ".png";
                         val.setSpid(imgUrl);
+                    } catch (Exception e2) {
+                        valSpid = valSpid.substring(3);
+                        valSpid = String.valueOf(Integer.valueOf(valSpid));
+                        try { // 선수 식별자로 액션샷 조회
+                            restTemplate.getForEntity(
+                                    "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p{pid}.png",
+                                    String.class, valSpid);
+                            imgUrl = "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p" + valSpid + ".png";
+                            val.setSpid(imgUrl);
+                        } catch (Exception e3) {
+                            restTemplate.getForEntity(
+                                    "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/players/p{pid}.png",
+                                    String.class, valSpid);
+                            imgUrl = "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/players/p" + valSpid + ".png";
+                            val.setSpid(imgUrl);
+                        }
                     }
                 }
             }
+        } catch (Exception e) {
+            buyRecordResponseDtoArray = null;
         }
         return buyRecordResponseDtoArray;
     }
@@ -187,43 +192,47 @@ public class UserApiClient {
             System.out.println(e.toString());
         }
 
-        assert sellRecordResponseDtoArray != null;
-        for (SellRecordResponseDto val : sellRecordResponseDtoArray) {
-            String valSpid = val.getSpid();
-            String imgUrl = null;
-            val.setTradeDate(val.getTradeDate().split("T")[0]);
-            val.setValue(NumberFormat.getInstance().format(Long.valueOf(val.getValue())));
-            try { // 선수 고유 식별자로 액션샷 조회
-                restTemplate.getForEntity(
-                        "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p{spid}.png",
-                        String.class, valSpid);
-                imgUrl = "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p" + valSpid + ".png";
-                val.setSpid(imgUrl);
-            } catch (Exception e1) {
-                try { // 선수 고유 식별자로 이미지 조회
+        try {
+            assert sellRecordResponseDtoArray != null;
+            for (SellRecordResponseDto val : sellRecordResponseDtoArray) {
+                String valSpid = val.getSpid();
+                String imgUrl = null;
+                val.setTradeDate(val.getTradeDate().split("T")[0]);
+                val.setValue(NumberFormat.getInstance().format(Long.valueOf(val.getValue())));
+                try { // 선수 고유 식별자로 액션샷 조회
                     restTemplate.getForEntity(
-                            "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/players/p{spid}.png",
+                            "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p{spid}.png",
                             String.class, valSpid);
-                    imgUrl = "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/players/p" + valSpid + ".png";
+                    imgUrl = "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p" + valSpid + ".png";
                     val.setSpid(imgUrl);
-                } catch (Exception e2) {
-                    valSpid = valSpid.substring(3);
-                    valSpid = String.valueOf(Integer.valueOf(valSpid));
-                    try { // 선수 식별자로 액션샷 조회
+                } catch (Exception e1) {
+                    try { // 선수 고유 식별자로 이미지 조회
                         restTemplate.getForEntity(
-                                "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p{pid}.png",
-                                String.class, valSpid);
-                        imgUrl = "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p" + valSpid + ".png";
-                        val.setSpid(imgUrl);
-                    } catch (Exception e3) {
-                        restTemplate.getForEntity(
-                                "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/players/p{pid}.png",
+                                "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/players/p{spid}.png",
                                 String.class, valSpid);
                         imgUrl = "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/players/p" + valSpid + ".png";
                         val.setSpid(imgUrl);
+                    } catch (Exception e2) {
+                        valSpid = valSpid.substring(3);
+                        valSpid = String.valueOf(Integer.valueOf(valSpid));
+                        try { // 선수 식별자로 액션샷 조회
+                            restTemplate.getForEntity(
+                                    "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p{pid}.png",
+                                    String.class, valSpid);
+                            imgUrl = "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p" + valSpid + ".png";
+                            val.setSpid(imgUrl);
+                        } catch (Exception e3) {
+                            restTemplate.getForEntity(
+                                    "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/players/p{pid}.png",
+                                    String.class, valSpid);
+                            imgUrl = "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/players/p" + valSpid + ".png";
+                            val.setSpid(imgUrl);
+                        }
                     }
                 }
             }
+        } catch (Exception e) {
+            sellRecordResponseDtoArray = null;
         }
         return sellRecordResponseDtoArray;
     }
