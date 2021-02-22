@@ -60,4 +60,11 @@ public class IndexController {
         model.addAttribute("record", sellRecordResponseDtoArray);
         return "user-trade-record-sell";
     }
+
+    @GetMapping("/user/match/record/{nickname}")
+    public String userMatchRecord(@PathVariable String nickname, Model model) {
+        UserInfoResponseDto userResponseDto = userService.userInfoFindById(nickname);
+        model.addAttribute("user", userResponseDto);
+        return "user-match-record";
+    }
 }

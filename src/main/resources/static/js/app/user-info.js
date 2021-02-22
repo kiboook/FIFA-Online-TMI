@@ -13,6 +13,12 @@ let main = {
         if (userRecordBtn) {
             userRecordBtn.addEventListener('click', _this.move_user_record_page);
         }
+
+        // 유저 매치 기록 페이지 이동 이벤트
+        const userMatchRecordBtn = document.querySelector("#btn-user-match-record");
+        if (userMatchRecordBtn) {
+            userMatchRecordBtn.addEventListener('click', _this.move_user_match_record_page);
+        }
     },
     search_user_max_division: function () {
         const url = window.location.pathname.split('/');
@@ -23,6 +29,11 @@ let main = {
         const url = window.location.pathname.split('/');
         const nickname = decodeURIComponent(url[url.length - 1]);
         window.location.href = `/user/trade/record/${nickname}`;
+    },
+    move_user_match_record_page: function () {
+        const url = window.location.pathname.split('/');
+        const nickname = decodeURIComponent(url[url.length - 1]);
+        window.location.href = `/user/match/record/${nickname}`;
     }
 };
 

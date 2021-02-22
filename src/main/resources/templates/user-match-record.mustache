@@ -1,6 +1,6 @@
 {{>layout/header}}
 
-<h1 style="text-align: center">구단주 정보</h1>
+<h1 style="text-align: center">매치 기록</h1>
 
 <div class="container mx-auto" style="margin: 200px 0; width: 1000px;">
     <h4 id="user-info-accessId" style="text-align: center">구단주 고유 식별 ID : {{user.accessId}}</h4>
@@ -9,16 +9,12 @@
 </div>
 
 <div class="container mx-auto" style="width: 80%; text-align: center;">
-    <button id="btn-max-division" data-hover="Rating" style="float: left">
-        <div>최고 등급</div>
+    <button data-hover="Official" style="float: left; margin-left: 100px">
+        <div>공식 경기</div>
     </button>
-    <button id="btn-user-trade-record" data-hover="Trade">
-        <div>거래 기록</div>
-    </button>
-    <button id="btn-user-match-record" data-hover="Match" style="float: right;">
-        <div>매치 기록</div>
+    <button data-hover="Coach" style="float: right; margin-right: 100px">
+        <div>감독 모드</div>
     </button>
 </div>
 
-<script src="/js/app/user-info.js"></script>
 {{>layout/footer}}
