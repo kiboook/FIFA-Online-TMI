@@ -86,6 +86,5 @@ public class UserService {
     public void metaDataInit() {
         requestMatchTypeMetaData();
         requestDivisionMetaData();
-//        requestPlayerMetaData();
     }
 }
