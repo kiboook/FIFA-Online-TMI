@@ -11,7 +11,7 @@ let main = {
         // 유저 닉네임 검색 Enter 키 이벤트
         const searchEnter = document.querySelector("#input-nickname");
         if (searchEnter) {
-            searchEnter.addEventListener('keyup', key => {
+            searchEnter.addEventListener('keydown', key => {
                 if (key.keyCode === 13) {
                     _this.search_user_info();
                 }
@@ -20,19 +20,17 @@ let main = {
     },
     search_user_info: function () {
         const nickname = document.querySelector("#input-nickname").value;
-
         if (nickname === '') {
             alert("구단주를 입력하세요!");
         } else {
-            $.ajax({
-                type: 'GET',
-                url: `/api/v1/user/${nickname}`
-            }).done(nickname => {
-                window.location.href = `/user/info/${nickname}`;
-            }).fail(err => {
-                console.log(err);
-                alert("존재하지 않는 구단주입니다!");
-            });
+            fetch(`/api/v1/user/${nickname}`)
+                .then(() => {
+                    window.location.href = `/user/info/${nickname}`;
+                })
+                .catch(err => {
+                    console.log(err);
+                    alert("존재하지 않는 구단주입니다!");
+                })
         }
     }
 };
